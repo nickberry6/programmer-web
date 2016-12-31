@@ -1,0 +1,17 @@
+{
+  "name": "programmer-web",
+  "version": "1.0.0",
+  "description": "web consumer of programmer apis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nick Berry",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-ui-router": "^0.3.2",
+    "bootstrap": "^3.3.7",
+    "gulp": "^3.9.1"
+  }
+}
