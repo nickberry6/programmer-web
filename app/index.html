@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='text/html'; charset='UTF-8'; />
+<title>Website Title</title>
+<script src="vendor.js"></script>
+<script src="index.js"></script>
+
+</head>
+
+<body ng-app="app">
+<div ng-controller="PostsController as vm">
+
+  <ul>
+    <li ng-repeat="item in vm.items">{{item.name}}></li>
+  </ul>
+
+  <input type="text" ng-model="vm.item.name">name</input>
+  <button type="button" ng-click="vm.submit()">Submit</button>
+
+</div>
+</body>
+</html>

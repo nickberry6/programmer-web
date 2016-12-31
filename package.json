@@ -12,7 +12,13 @@
     "angular": "^1.6.1",
     "angular-ui-router": "^0.3.2",
     "bootstrap": "^3.3.7",
+    "browser-sync": "^2.18.5",
+    "browserify": "^13.1.1",
     "gulp": "^3.9.1",
-    "gulp-browserify": "^0.5.1"
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.6.1"
+  },
+  "devDependencies": {
+    "gulp-clean": "^0.3.2"
   }
 }
