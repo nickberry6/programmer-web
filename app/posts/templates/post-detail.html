@@ -1,5 +1,7 @@
 <div class="container">
-  <label>Name:</label><input type="text" ng-model="vm.item.name">name</input>
-  <button type="button" ng-click="vm.submitPost()">Submit</button>
-  <span ng-click="vm.deletePost(item._id.$oid)" class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+  <label>Name:</label><input type="text" ng-model="vm.item.name"></input>
+  <br>
+  <label>Description:</label><textarea ng-model="vm.item.description"></textarea>
+  <button type="button" ng-click="vm.savePost()">Submit</button>
+  <span ng-click="vm.deletePost(vm.item._id.$oid)" class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
 </div>

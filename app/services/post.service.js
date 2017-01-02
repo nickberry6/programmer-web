@@ -8,13 +8,21 @@
     /* @ngInject */
     function postService($resource) {
         var service = {
-          Posts: Posts
+          Posts: Posts,
+          updatePost: updatePost
         };
 
         return service;
 
         function Posts() {
           return $resource('http://localhost:3000/posts/:id');
+        }
+
+        function updatePost() {
+          $resource('http://localhost:3000/posts/:id', null,
+          {
+            'update': { method:'PUT' }
+          });
         }
     }
 })();
