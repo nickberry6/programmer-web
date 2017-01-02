@@ -5,26 +5,35 @@
         .module('app.posts')
         .controller('PostsController', PostsController);
 
-    // Controller.$inject = ['dependencies'];
-
     /* @ngInject */
-    function PostsController($http) {
+    function PostsController(postService, $http, $window) {
         var vm = this;
         vm.item = {};
+        vm.items = [];
 
-        vm.submit = submit;
+        vm.submitPost = submitPost;
+        vm.deletePost = deletePost;
 
         activate();
 
         function activate() {
-          $http.get('http://localhost:3000/posts').then(function(response){
-            vm.items = response
+          postService.Posts().query(function(response){
+            vm.items = response;
           });
         }
 
-        function submit() {
-          $http.post('http://localhost:3000/posts', vm.item).then(function(response){
-            vm.item = response;
+        function submitPost() {
+          postService.Posts().save(vm.item, function(response){
+            vm.item = undefined;
+            $window.alert('Successfully created post ' + response.name);
+          });
+        }
+
+        function deletePost(id) {
+          postService.Posts().delete({id: id}, function(response){
+            console.log(response)
+            vm.item = undefined;
+            $window.alert('Successfully deleted post.');
           });
         }
     }

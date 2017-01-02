@@ -19,6 +19,12 @@ gulp.task('browser-sync', function() {
         }
     });
     gulp.watch("app/**/*.js", ['js-watch']);
+    gulp.watch("app/**/*.html", ['html-watch']);
+});
+
+gulp.task('html-watch', ['html'], function (done) {
+    browserSync.reload();
+    done();
 });
 
 gulp.task('js-watch', ['scripts'], function (done) {
@@ -36,6 +42,16 @@ gulp.task('vendor', function() {
   return gulp.src('vendor.js')
     .pipe(browserify())
     .pipe(gulp.dest('dist'));
+});
+
+gulp.task('vendorCSS', function() {
+  return gulp.src('node_modules/bootstrap/dist/css/bootstrap.min.css')
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('vendorFonts', function() {
+  return gulp.src('node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2')
+    .pipe(gulp.dest('dist/fonts'));
 });
 
 gulp.task('html', function() {
