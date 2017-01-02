@@ -3,13 +3,14 @@
 
     angular
         .module('app.posts')
-        .controller('PostsController', PostsController);
+        .controller('PostDetailController', PostDetailController);
+
 
     /* @ngInject */
-    function PostsController(postService, $http, $window) {
+    function PostDetailController(postService, $http, $window, $stateParams, $state) {
         var vm = this;
         vm.item = {};
-        vm.items = [];
+        console.log('details')
 
         vm.submitPost = submitPost;
         vm.deletePost = deletePost;
@@ -17,8 +18,8 @@
         activate();
 
         function activate() {
-          postService.Posts().query(function(response){
-            vm.items = response;
+          postService.Posts().get({id: $stateParams.id}, function(response) {
+            vm.item = response;
           });
         }
 

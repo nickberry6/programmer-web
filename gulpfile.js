@@ -6,6 +6,7 @@ var browserSync = require('browser-sync').create();
 
 gulp.task('build', ['scripts', 'html']);
 gulp.task('serve', ['browser-sync']);
+gulp.task('vendor', ['vendorJS', 'vendorCSS', 'vendorFonts']);
 
 gulp.task('browser-sync', function() {
     browserSync.init({
@@ -38,7 +39,7 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('vendor', function() {
+gulp.task('vendorJS', function() {
   return gulp.src('vendor.js')
     .pipe(browserify())
     .pipe(gulp.dest('dist'));
@@ -55,7 +56,7 @@ gulp.task('vendorFonts', function() {
 });
 
 gulp.task('html', function() {
-  return gulp.src('app/index.html')
+  return gulp.src('app/**/*.html')
     .pipe(gulp.dest('dist'));
 });
 

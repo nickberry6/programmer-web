@@ -2,30 +2,24 @@
 <html>
 <head>
   <meta content='text/html'; charset='UTF-8'; />
-  <title>Programmer</title>
+  <title>App</title>
   <script src="vendor.js"></script>
   <script src="index.js"></script>
   <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
 </head>
 
   <body ng-app="app" style="padding-top:70px;">
-    <div ng-controller="PostsController as vm">
       <div class="container">
         <nav class="navbar navbar-default navbar-fixed-top">
           <div class="container">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#">Programmer</a>
+              <a class="navbar-brand" ui-sref="list">App</a>
             </div>
           </div>
         </nav>
       </div>
+      <ui-view>
+      </ui-view>
 
-        <h5>Program List:</h5>
-        <div style="margin:10px;" ng-repeat="item in vm.items">{{item.name}} {{item.id}}<span ng-click="vm.deletePost(item._id.$oid)" class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></div>
-
-        <input type="text" ng-model="vm.item.name">name</input>
-        <button type="button" ng-click="vm.submitPost()">Submit</button>
-
-    </div>
   </body>
 </html>
