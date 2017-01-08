@@ -20,7 +20,7 @@ gulp.task('browser-sync', function() {
         }
     });
     gulp.watch("app/**/*.js", ['js-watch']);
-    gulp.watch("app/**/*.html", ['html-watch']);
+    gulp.watch("app/**/**/*.html", ['html-watch']);
 });
 
 gulp.task('html-watch', ['html'], function (done) {
@@ -56,7 +56,7 @@ gulp.task('vendorFonts', function() {
 });
 
 gulp.task('html', function() {
-  return gulp.src('app/**/*.html')
+  return gulp.src('app/**/**/*.html')
     .pipe(gulp.dest('dist'));
 });
 

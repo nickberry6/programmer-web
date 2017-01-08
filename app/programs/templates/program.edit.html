@@ -1,0 +1,14 @@
+<div class="container">
+  <button class="btn btn-default" style="margin-top:25px;" ui-sref="list">Back to List</button>
+  <h3>{{vm.item.name}}</h3>
+  <div>
+    <label for="program-name">Your program name</label>
+    <input type="text" class="form-control" placeholder="Name" id="program-name" ng-model="vm.item.name">
+  </div>
+  <div>
+    <label for="program-goal">The end goal of your program</label>
+    <input type="text" class="form-control" placeholder="Goal" id="program-goal" ng-model="vm.item.goal">
+  </div>
+  <button class="btn btn-default" style="margin-top:10px;" ng-click="vm.saveProgram()">Save</button>
+  <span ng-click="vm.deleteProgram(vm.item._id.$oid)" class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+</div>

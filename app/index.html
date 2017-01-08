@@ -8,18 +8,21 @@
   <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
 </head>
 
-  <body ng-app="app" style="padding-top:70px;">
-      <div class="container">
-        <nav class="navbar navbar-default navbar-fixed-top">
-          <div class="container">
-            <div class="navbar-header">
-              <a class="navbar-brand" ui-sref="list">App</a>
-            </div>
+<body ng-app="app" style="padding-top:50px;background-color:#2f6cce;color:#fff;">
+    <div class="container">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand"  style="border-right: solid 1px #777;" ui-sref="list">App</a>
+              <div style="float:right;text-align:center;margin-top:15px;margin-right:10px;">
+                <a style="color:#777;" ui-sref="list">Log In</a>
+                <a style="color:#777;" ui-sref="list">or Sign Up</a>
+              </div>
           </div>
-        </nav>
-      </div>
-      <ui-view>
-      </ui-view>
+        </div>
+      </nav>
+    </div>
+  <ui-view></ui-view>
 
-  </body>
+</body>
 </html>

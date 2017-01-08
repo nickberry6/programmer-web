@@ -4,6 +4,6 @@
     angular
         .module('app', [
             'app.core',
-            'app.posts'
+            'app.programs'
         ]);
 })();

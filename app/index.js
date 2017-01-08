@@ -1,7 +1,8 @@
 require('./app.module.js');
 require('./core/core.module.js');
-require('./posts/posts.module.js');
-require('./posts/postList.controller.js');
-require('./posts/postDetail.controller.js');
-require('./posts/posts.routes.js');
-require('./services/post.service.js');
+require('./programs/programs.module.js');
+require('./programs/program.list.controller.js');
+require('./programs/program.edit.controller.js');
+require('./programs/program.new.controller.js');
+require('./programs/program.routes.js');
+require('./services/program.service.js');
