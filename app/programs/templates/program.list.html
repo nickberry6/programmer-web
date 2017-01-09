@@ -1,11 +1,14 @@
 <div class="container">
+  <button style="display:block;float:right;margin-top:15px;" class="btn btn-default" ui-sref="new">Create your own</button>
   <h1 class="page-header">All Programs:</h1>
-  <button style="display:block;" class="btn btn-default" ui-sref="new">Create your own</button>
+
   <div style="position:relative;margin-bottom:10px;margin-top:10px;border: 2px solid; border-radius: 5px;" ng-repeat="item in vm.items">
     <div ui-sref="edit({id: item._id.$oid})" style="padding:10px;">
-      <h5>{{item.name}}</h5>
-      <label>Program Goal:</label>
-      <p>{{item.goal}}</p>
+      <div style="display:inline-block;font-size:20px;"><b>{{item.name}}</b></div>
+      <div style="float:right;display:inline-block;">{{item.duration}} weeks</div>
+      <div style="display:block;">
+        <div><b>Program Goal:</b> {{item.goal}}</div>
+      </div>
     </div>
   </div>
 </div>

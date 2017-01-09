@@ -9,6 +9,7 @@
     function NewProgramController(programService, $http, $window, $state) {
       var vm = this;
       vm.item = {};
+      vm.createSuccess = false;
 
       vm.addProgram = addProgram;
 
@@ -19,10 +20,15 @@
       };
 
       function addProgram() {
-        programService.Programs().save({vm.item}, function(response) {
+        programService.Programs().save(vm.item, function(response) {
+          vm.createSuccess = true;
           vm.item = response;
-          console.log(vm.item)
+          $state.go('edit', {id: response._id.$oid});
         });
+      };
+
+      function weeksToSeconds(weeks) {
+        
       };
 
     }

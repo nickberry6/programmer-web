@@ -30,7 +30,6 @@
 
         function deleteProgram(id) {
           programService.Programs().delete({id: id}, function(response){
-            console.log(response)
             vm.item = undefined;
             $window.alert('Successfully deleted program.');
             $state.go('list', {reload: true});
