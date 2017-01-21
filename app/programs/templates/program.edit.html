@@ -1,22 +1,34 @@
 <div class="container">
   <button class="btn btn-default" style="margin-top:25px;display:inline-block;" ui-sref="list">Back to List</button>
-  <button class="btn btn-danger" style="margin-top:25px;display:inline-block;float:right;" ng-click="vm.deleteProgram(vm.item._id.$oid)" class="glyphicon glyphicon-remove-sign" aria-hidden="true">Delete Post</button>
-  <h3>{{vm.item.name}}</h3>
-  <form>
-    <div class="form-group">
-      <label for="program-name">Your program name*</label>
-      <input type="text" style="width: 400px;" class="form-control" placeholder="Name" id="program-name" ng-model="vm.item.name">
-    </div>
-    <div class="form-group">
-      <label for="program-goal">The end goal of your program</label>
-      <input type="text" style="width: 400px;" class="form-control" placeholder="Goal" id="program-goal" ng-model="vm.item.goal">
-    </div>
-    <div class="form-group">
-      <label for="program-duration">Duration (Weeks)*</label>
-      <input type="number" style="width: 75px;" class="form-control" id="program-duration" ng-model="vm.item.duration">
-    </div>
-    <div style="margin-top:10px">
-      <button class="btn btn-success" ng-click="vm.saveProgram()">Save</button>
-    </div>
-  </form>
+  <div class="container" style="background-color:#fff;color:#000;border-radius:5px;width:500px;margin-top:10px;">
+    <h3 style="display:inline-block;">{{vm.item.name}}</h3>
+    <button class="btn btn-danger" style="display:inline-block;float:right;margin-top:20px;" ng-click="vm.deleteProgram(vm.item._id.$oid)" aria-hidden="true">Delete Post</button>
+    <ul class="nav nav-pills">
+      <li role="presentation" class="active"><a href="#">Info</a></li>
+      <li role="presentation"><a href="#">Workouts</a></li>
+      <li role="presentation"><a href="#">Performance</a></li>
+    </ul>
+
+    <form style="padding-top:10px;">
+      <div class="form-group">
+        <label for="program-name">Your program name*</label>
+        <input type="text" style="width: 400px;" class="form-control" placeholder="Name" id="program-name" ng-model="vm.item.name">
+      </div>
+      <div class="form-group">
+        <label for="program-goal">The end goal of your program</label>
+        <input type="text" style="width: 400px;" class="form-control" placeholder="Goal" id="program-goal" ng-model="vm.item.goal">
+      </div>
+      <div class="form-group">
+        <label for="program-duration">Duration (Weeks)*</label>
+        <input type="number" style="width: 75px;" class="form-control" id="program-duration" ng-model="vm.item.duration">
+      </div>
+      <div class="form-group">
+        <label>Tags</label>
+        <tags-input ng-model="vm.item.tags"></tags-input>
+      </div>
+      <div style="margin-bottom:10px">
+        <button class="btn btn-success" ng-click="vm.saveProgram()">Save</button>
+      </div>
+    </form>
+  </div>
 </div>

@@ -7,8 +7,8 @@
       <div style="display:inline-block;font-size:20px;"><b>{{item.name}}</b></div>
       <div style="float:right;display:inline-block;">{{item.duration}} weeks</div>
       <div style="display:block;">
-        <div><b>Program Goal:</b> {{item.goal}}</div>
-      </div>
+        <div style="display:inline"><b>Program Goal:</b> {{item.goal}}</div>
+        <div style="display:inline;float:right;padding:3px;margin-right:3px;border:1px solid;border-radius:5px;" ng-repeat="tag in item.tags">{{tag.text}}</div>
     </div>
   </div>
 </div>

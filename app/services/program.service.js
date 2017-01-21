@@ -19,10 +19,16 @@
         }
 
         function updateProgram() {
-          $resource('http://localhost:3000/programs/:id', null,
-          {
-            'update': { method:'PUT' }
-          });
-        }
+          return $resource('http://localhost:3000/programs/:id', null, {
+          'update': { method:'PUT' }
+        })
+      };
+
+        // function updateProgram() {
+        //   $resource('http://localhost:3000/programs/:id', null,
+        //   {
+        //     'update': { method:'PUT' }
+        //   })
+        // }
     }
 })();

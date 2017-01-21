@@ -46,7 +46,8 @@ gulp.task('vendorJS', function() {
 });
 
 gulp.task('vendorCSS', function() {
-  return gulp.src('node_modules/bootstrap/dist/css/bootstrap.min.css')
+  return gulp.src(['node_modules/bootstrap/dist/css/bootstrap.min.css', 'node_modules/ng-tags-input/build/ng-tags-input.min.css'])
+    .pipe(concat('vendorCSS.css'))
     .pipe(gulp.dest('dist'));
 });
 

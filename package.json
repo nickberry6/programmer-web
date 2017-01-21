@@ -17,7 +17,8 @@
     "browserify": "^13.1.1",
     "gulp": "^3.9.1",
     "gulp-browserify": "^0.5.1",
-    "gulp-concat": "^2.6.1"
+    "gulp-concat": "^2.6.1",
+    "ng-tags-input": "^3.1.1"
   },
   "devDependencies": {
     "gulp-clean": "^0.3.2"

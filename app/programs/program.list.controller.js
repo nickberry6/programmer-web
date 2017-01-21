@@ -18,7 +18,6 @@
         function activate() {
           programService.Programs().query(function(response){
             vm.items = response;
-            console.log(response);
           });
         }
     }

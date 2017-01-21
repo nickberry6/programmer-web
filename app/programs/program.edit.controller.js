@@ -19,14 +19,22 @@
         function activate() {
           programService.Programs().get({id: $stateParams.id}, function(response) {
             vm.item = response;
-            console.log(vm.item)
           });
-        }
+        };
 
         function saveProgram() {
-          console.log('iwascalled');
-          // programService.updateProgram({vm.item._id.$oid}, vm.item);
-        }
+          var program = {
+            id: vm.item._id.$oid,
+            name: vm.item.name,
+            goal: vm.item.goal,
+            duration: vm.item.duration,
+            tags: vm.item.tags
+          }
+          programService.updateProgram().update({id: program.id}, program, function(response) {
+            vm.item = response;
+            $window.alert('Successfully updated program.');
+          });
+        };
 
         function deleteProgram(id) {
           programService.Programs().delete({id: id}, function(response){
@@ -34,6 +42,6 @@
             $window.alert('Successfully deleted program.');
             $state.go('list', {reload: true});
           });
-        }
+        };
     }
 })();

@@ -12,6 +12,8 @@
       vm.createSuccess = false;
 
       vm.addProgram = addProgram;
+      vm.goToInfo = goToInfo;
+      vm.goToWorkouts = goToWorkouts;
 
       activate();
 
@@ -20,6 +22,7 @@
       };
 
       function addProgram() {
+        console.log(vm.item)
         programService.Programs().save(vm.item, function(response) {
           vm.createSuccess = true;
           vm.item = response;
@@ -27,8 +30,12 @@
         });
       };
 
-      function weeksToSeconds(weeks) {
-        
+      function goToWorkouts() {
+        vm.workout = true;
+      };
+
+      function goToInfo() {
+        vm.workout = false;
       };
 
     }
