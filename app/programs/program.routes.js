@@ -14,6 +14,11 @@
             templateUrl: 'programs/templates/program.edit.html',
             controller: 'ProgramDetailController as vm'
           })
+          .state('edit.workout', {
+            url: '/programs/:id/workouts',
+            templateUrl: 'programs/templates/program.workout.html',
+            controller: 'ProgramDetailController as vm'
+          })
           .state('new', {
             url: '/program/new',
             templateUrl: 'programs/templates/program.new.html',

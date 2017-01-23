@@ -6,7 +6,7 @@
         .controller('ProgramListController', ProgramListController);
 
     /* @ngInject */
-    function ProgramListController(programService, $http, $window, $stateParams, $state) {
+    function ProgramListController(programService, $stateParams, $state) {
         var vm = this;
         vm.item = {};
         vm.items = [];

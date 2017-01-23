@@ -7,7 +7,7 @@
 
 
     /* @ngInject */
-    function ProgramDetailController(programService, $http, $window, $stateParams, $state) {
+    function ProgramDetailController(programService, $window, $stateParams, $state) {
         var vm = this;
         vm.item = {};
 

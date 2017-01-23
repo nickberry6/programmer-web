@@ -1,10 +1,11 @@
 <div class="container">
   <button class="btn btn-default" style="margin-top:25px;" ui-sref="list">Back to List</button>
   <div class="container" style="background-color:#fff;color:#000;border-radius:5px;width:500px;margin-top:10px;">
-    <div ng-show="!vm.workout">
+    <div ng-show="vm.program">
       <ul class="nav nav-pills" style="padding-top:10px;">
-        <li role="presentation" class="active"><a ng-click="vm.goToInfo()">Info</a></li>
+        <li role="presentation" class="active"><a ng-click="vm.goToInfo()">Program Info</a></li>
         <li role="presentation"><a ng-click="vm.goToWorkouts()">Workouts</a></li>
+        <li role="presentation"><a ng-click="vm.goToExercises()">Exercises</a></li>
       </ul>
 
       <form style="padding-top:10px;">
@@ -22,7 +23,7 @@
         </div>
         <div class="form-group">
           <label for="program-tags">Tags</label>
-          <tags-input ng-model="vm.item.tags"></tags-input>
+          <tags-input style="width:400px;border-raduis:4px;" ng-model="vm.item.tags"></tags-input>
         </div>
         <div style="margin-bottom:10px">
           <button class="btn btn-primary" ng-click="vm.goToWorkouts()">Next</button>
@@ -30,24 +31,110 @@
       </form>
     </div>
 
-    <div ng-show="vm.workout">
+    <div ng-show="vm.workouts">
       <ul class="nav nav-pills" style="padding-top:10px;">
-        <li role="presentation"><a ng-click="vm.goToInfo()">Info</a></li>
+        <li role="presentation"><a ng-click="vm.goToInfo()">Program Info</a></li>
         <li role="presentation" class="active"><a ng-click="vm.goToWorkouts()">Workouts</a></li>
+        <li role="presentation"><a ng-click="vm.goToExercises()">Exercises</a></li>
       </ul>
+      <h2>Workouts</h2>
+      <p>Workouts that will make up your program. <br>
+        <span style="font-size:12px;color:#777;font-style:italic;">You don't have to make all of these now</span>
+      </p>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Workout</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in vm.workouts">
+            <td>{{item.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-bottom:10px;display:inline-block;">
+        <button class="btn btn-success" ng-click="vm.goToExercises()">Add Workout</button>
+      </div>
+    </div>
 
-      <form style="padding-top:10px;">
+      <div ng-show="vm.exerciseList">
+        <ul class="nav nav-pills" style="padding-top:10px;">
+          <li role="presentation"><a ng-click="vm.goToInfo()">Program Info</a></li>
+          <li role="presentation"><a ng-click="vm.goToWorkouts()">Workouts</a></li>
+          <li role="presentation" class="active"><a ng-click="vm.goToExercises()">Exercises</a></li>
+        </ul>
+        <h2>Exercises</h2>
+        <p>Exercises in this program.</p>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Exercise</th>
+              <th>Sets</th>
+              <th>Metric</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in vm.exercises">
+              <td>{{item.exercise}}</td>
+              <td>{{item.sets}}</td>
+              <td ng-show="vm.repMetric=='repetitions'">{{item.repetitions}}</td>
+              <td ng-show="vm.repMetric=='time'">{{item.time}}</td>
+              <td ng-show="vm.repMetric=='rounds'">{{item.rounds}}</td>
+              <td ng-show="vm.repMetric=='maxWeight'">{{item.maxWeight}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-bottom:10px;display:inline-block;">
+          <button class="btn btn-success" ng-click="vm.goToExercise()">Add Exercise</button>
+        </div>
+      </div>
+
+      <div ng-show="vm.newExercise" style="padding-top:10px;">
+        <ul class="nav nav-pills" style="padding-top:10px;">
+          <li role="presentation"><a ng-click="vm.goToInfo()">Program Info</a></li>
+          <li role="presentation"><a ng-click="vm.goToWorkouts()">Workouts</a></li>
+          <li role="presentation" class="active"><a ng-click="vm.goToExercises()">Exercises</a></li>
+        </ul>
         <h4>Add Exercise</h4>
         <div class="form-group" style="display:inline-block;">
           <label>Exercise</label>
-          <input type="text" style="width: 150px;" class="form-control" placeholder="Bicep curls">
+          <input type="text" style="width: 150px;" class="form-control" ng-model="vm.exercise.exercise" placeholder="Bicep curls">
+        </div>
+        <div class="form-group" style="display:inline-block;">
+          <label>Sets</label>
+          <input type="number" style="width: 150px;" class="form-control" ng-model="vm.exercise.sets" placeholder="5">
+        </div>
+        <div class="form-group">
+          <label for="metric">for:</label>
+          <select class="form-control" id="metric" style="width:300px;" ng-model="vm.repMetric">
+            <option value="repetitions">Repetitions</option>
+            <option value="time">Time</option>
+            <option value="rounds">Rounds</option>
+            <option value="maxWeight">Max Weight</option>
+          </select>
+        </div>
+        <div class="form-group" ng-show="vm.repMetric =='repetitions'">
           <label>Repetitions</label>
-          <input type="number" style="width: 150px;" class="form-control" placeholder="8">
+          <input type="number" style="width: 150px;" class="form-control" ng-model="vm.exercise.repetitions" placeholder="8">
         </div>
-        <div style="margin-bottom:10px">
-          <button class="btn btn-primary" ng-click="vm.goToInfo()">Previous</button>
+        <div class="form-group" ng-show="vm.repMetric == 'time'">
+          <label>Time</label>
+          <input type="text" style="width: 150px;" class="form-control" ng-model="vm.exercise.time" placeholder="3 minutes">
         </div>
-      </form>
-    </div>
+        <div class="form-group" ng-show="vm.repMetric == 'rounds'">
+          <label>Rounds</label>
+          <input type="number" style="width: 150px;" class="form-control" ng-model="vm.exercise.rounds" placeholder="4">
+        </div>
+        <div class="form-group" ng-show="vm.repMetric == 'maxWeight'">
+          <label>Max Weight</label>
+          <input type="number" style="width: 150px;" class="form-control" ng-model="vm.exercise.maxWeight" placeholder="315">
+        </div>
+        <div style="margin-bottom:10px;">
+          <button class="btn btn-success" ng-click="vm.addExercise()">Save Exercise</button>
+          <button class="btn btn-default" ng-click="vm.goToExercises()">Cancel</button>
+        </div>
+      </div>
+
   </div>
 </div>

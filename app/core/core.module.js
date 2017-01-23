@@ -5,6 +5,7 @@
         .module('app.core', [
             'ui.router',
             'ngResource',
-            'ngTagsInput'
+            'ngTagsInput',
+            'ui.bootstrap'
         ]);
 })();

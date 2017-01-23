@@ -14,6 +14,8 @@
 
         return service;
 
+        // refactor Programs method for each action individually
+
         function Programs() {
           return $resource('http://localhost:3000/programs/:id');
         }
@@ -23,12 +25,5 @@
           'update': { method:'PUT' }
         })
       };
-
-        // function updateProgram() {
-        //   $resource('http://localhost:3000/programs/:id', null,
-        //   {
-        //     'update': { method:'PUT' }
-        //   })
-        // }
     }
 })();
