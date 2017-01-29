@@ -1,0 +1,33 @@
+  <div>
+    <ul class="nav nav-pills" style="padding-top:10px;">
+      <li role="presentation"><a ui-sref="new.info">Program Info</a></li>
+      <li role="presentation"><a ui-sref="new.workouts">Workouts</a></li>
+      <li role="presentation" class="active"><a ui-sref="new.exercises">Exercises</a></li>
+    </ul>
+    <h2>Exercises</h2>
+    <p>Exercises in this program.</p>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Exercise</th>
+          <th>Sets</th>
+          <th>Metric</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in vm.exercises">
+          <td>{{item.exercise}}</td>
+          <td>{{item.sets}}</td>
+          <td>
+            <span ng-show="item.repetitions">{{item.repetitions}} reps</span>
+            <span ng-show="item.time">{{item.time}}</span>
+            <span ng-show="item.rounds">{{item.rounds}} rounds</span>
+            <span ng-show="item.maxWeight">{{item.maxWeight}} pounds</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-bottom:10px;display:inline-block;">
+      <button class="btn btn-success" ng-click="vm.showExercise()">Add Exercise</button>
+    </div>
+  </div>

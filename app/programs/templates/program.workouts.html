@@ -1,0 +1,24 @@
+<div>
+  <ul class="nav nav-pills" style="padding-top:10px;">
+    <li role="presentation"><a ui-sref="new.info">Program Info</a></li>
+    <li role="presentation" class="active"><a ui-sref="new.workouts">Workouts</a></li>
+    <li role="presentation"><a ui-sref="new.exercises">Exercises</a></li>
+  </ul>
+  <h2>Workouts</h2>
+  <p>Workouts that will make up your program.</p>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Workout</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in vm.workouts">
+        <td>{{item.name}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-bottom:10px;display:inline-block;">
+    <button class="btn btn-success" ng-click="vm.goToExercises()">Add Workout</button>
+  </div>
+</div>

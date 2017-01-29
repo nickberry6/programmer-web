@@ -3,10 +3,11 @@
 
     angular
         .module('app.programs')
-        .controller('NewProgramController', NewProgramController);
+        .controller('NewProgramController', NewProgramController)
+        .controller('NewExerciseController', NewExerciseController);
 
     /* @ngInject */
-    function NewProgramController(programService, $window, $state) {
+    function NewProgramController(programService, $window, $state, $uibModal) {
       var vm = this;
       vm.item = {};
       vm.exercise = {};
@@ -17,15 +18,10 @@
       vm.maxWeight = false;
       vm.rounds = false;
       vm.program = true;
-      vm.exerciseList = false;
-      vm.newExercise = false
 
       vm.addProgram = addProgram;
-      vm.goToInfo = goToInfo;
-      vm.goToWorkouts = goToWorkouts;
-      vm.addExercise = addExercise;
-      vm.goToExercise = goToExercise;
-      vm.goToExercises = goToExercises;
+      vm.showExercise = showExercise;
+      // vm.cancelModal = cancelModal;
 
       activate();
 
@@ -41,39 +37,44 @@
         });
       };
 
-      function goToWorkouts() {
-        vm.program = false;
-        vm.workouts = true;
-        vm.exerciseList = false;
-        vm.newExercise = false;
-      };
+      function showExercise() {
+        var instance = $uibModal.open({
+          animation: false,
+          ariaLabelledBy: 'modal-title-top',
+          ariaDescribedBy: 'modal-body-top',
+          templateUrl: 'programs/templates/workout.new.html',
+          size: 'md',
+          controller: 'NewExerciseController',
+          controllerAs: 'vm'
+        });
 
-      function goToExercises() {
-        vm.program = false;
-        vm.workouts = false;
-        vm.newExercise = false;
-        vm.exerciseList = true;
+        instance.result.then(function (exercises) {
+          exercises.forEach(function(exercise){
+            vm.exercises.push(exercise);
+          });
+        }, function () {
+          console.log('closed');
+        });
       };
+    };
 
-      function goToInfo() {
-        vm.program = true;
-        vm.workouts = false;
-        vm.exerciseList = false;
-        vm.newExercise = false;
-      };
+  function NewExerciseController($uibModalInstance) {
+    var vm = this;
+    vm.exercise = {};
+    vm.exercises = [];
+    vm.repMetric = 'repetitions';
 
-      function goToExercise() {
-        vm.newExercise = true;
-        vm.workouts = false;
-        vm.exerciseList = false;
-      };
+    vm.addExercise = addExercise;
+    vm.cancel = cancel;
 
-      function addExercise() {
-        vm.newExercise = false;
-        vm.exercises.push(vm.exercise);
-        vm.exercise = null;
-        vm.exerciseList = true;
-      };
+    function addExercise() {
+      vm.exercises.push(vm.exercise);
+      vm.exercise = null;
+      $uibModalInstance.close(vm.exercises);
+    };
 
-    }
+    function cancel() {
+      $uibModalInstance.dismiss('cancel');
+    };
+  };
 })();
