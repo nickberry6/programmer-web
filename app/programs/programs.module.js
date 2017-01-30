@@ -2,7 +2,5 @@
     'use strict';
 
     angular
-        .module('app.programs', [
-            'app.core'
-        ]);
+        .module('app.programs', []);
 })();

@@ -4,7 +4,7 @@
 <div class="container" style="color:#000">
   <div class="form-group" style="display:inline-block;">
     <label>Exercise</label>
-    <input type="text" style="width: 140px;" class="form-control" ng-model="vm.exercise.exercise" placeholder="Bicep curls">
+    <input type="text" style="width: 140px;" class="form-control" ng-model="vm.exercise.name" placeholder="Bicep curls">
   </div>
   <div class="form-group" style="display:inline-block;">
     <label for="sets">Sets</label>
@@ -45,6 +45,6 @@
   </div>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-success" ng-click="vm.addExercise()">Save Exercise</button>
+  <button class="btn btn-success" ng-click="vm.addExercise()">Save</button>
   <button class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
 </div>

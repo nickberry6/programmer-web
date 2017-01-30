@@ -7,17 +7,13 @@
         .controller('NewExerciseController', NewExerciseController);
 
     /* @ngInject */
-    function NewProgramController(programService, $window, $state, $uibModal) {
+    function NewProgramController(programService, exerciseService, $window, $state, $uibModal) {
       var vm = this;
       vm.item = {};
       vm.exercise = {};
       vm.exercises = [];
       vm.createSuccess = false;
-      vm.repetitions = false;
-      vm.time = false;
-      vm.maxWeight = false;
-      vm.rounds = false;
-      vm.program = true;
+
 
       vm.addProgram = addProgram;
       vm.showExercise = showExercise;
@@ -42,8 +38,8 @@
           animation: false,
           ariaLabelledBy: 'modal-title-top',
           ariaDescribedBy: 'modal-body-top',
-          templateUrl: 'programs/templates/workout.new.html',
-          size: 'md',
+          templateUrl: 'programs/templates/exercise.new.html',
+          size: 'sm',
           controller: 'NewExerciseController',
           controllerAs: 'vm'
         });
@@ -58,7 +54,7 @@
       };
     };
 
-  function NewExerciseController($uibModalInstance) {
+  function NewExerciseController($uibModalInstance, exerciseService) {
     var vm = this;
     vm.exercise = {};
     vm.exercises = [];
@@ -69,7 +65,10 @@
 
     function addExercise() {
       vm.exercises.push(vm.exercise);
-      vm.exercise = null;
+      exerciseService.Exercises().save(vm.exercise, function(response) {
+        console.log(response);
+        vm.exercise = null;
+      });
       $uibModalInstance.close(vm.exercises);
     };
 

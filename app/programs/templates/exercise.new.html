@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h3 class="modal-title" style="color:#000" id="modal-title">Add Exercise</h4>
+</div>
+<div class="container" style="color:#000">
+  <div class="form-group" style="display:inline-block;">
+    <label>Exercise</label>
+    <input type="text" style="width: 150px;" class="form-control" ng-model="vm.exercise.name" placeholder="Bicep curls">
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <input type="text" style="width: 150px;" class="form-control" ng-model="vm.exercise.description" placeholder="Max effort">
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-success" ng-click="vm.addExercise()">Add</button>
+  <button class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
+</div>

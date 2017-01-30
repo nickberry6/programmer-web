@@ -6,3 +6,4 @@ require('./programs/program.edit.controller.js');
 require('./programs/program.new.controller.js');
 require('./programs/program.routes.js');
 require('./services/program.service.js');
+require('./services/exercise.service.js');
